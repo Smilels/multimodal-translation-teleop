@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://smilels.github.io/multimodal-translation-teleop/ -->
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="./teleop/style.css">
+
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <title>Abstract | A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU</title>
+    <meta name="generator" content="Jekyll v3.8.5">
+    <meta property="og:title" content="Abstract">
+    <meta property="og:locale" content="en_US">
+    <meta name="description"
+          content="Shuang Li, Jiaxi Jiang, Philipp Ruppel, Hongzhuo Liang, Xiaojian Ma, Norman Hendrich, Fuchun Sun, Jianwei Zhang">
+    <meta property="og:description"
+          content="Shuang Li, Jiaxi Jiang, Philipp Ruppel, Hongzhuo Liang, Xiaojian Ma, Norman Hendrich, Fuchun Sun, Jianwei Zhang">
+    <link rel="canonical" href="https://smilels.github.io/multimodal-translation-teleop/">
+    <meta property="og:url" content="https://smilels.github.io/multimodal-translation-teleop/">
+    <meta property="og:site_name" content="A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU">
+    <script type="application/ld+json">
+{"@type":"WebSite","headline":"Abstract","url":"https://smilels.github.io/multimodal-translation-teleop/","name":"A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU","description":"Shuang Li, Jiaxi Jiang, Philipp Ruppel, Hongzhuo Liang, Xiaojian Ma, Norman Hendrich, Fuchun Sun, Jianwei Zhang","@context":"https://schema.org"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+
+</head>
+
+<body data-gr-c-s-loaded="true">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/Smilels/multimodal-translation-teleop">View on GitHub</a>
+
+        <h1 id="project_title">A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU</h1>
+        <h2 id="project_tagline">Shuang Li, Jiaxi Jiang, Philipp Ruppel, Hongzhuo Liang, Xiaojian Ma, Norman Hendrich,
+            Fuchun Sun, Jianwei Zhang</h2>
+
+
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <p align="justify">Our goal is to build a mobile robotic hand-arm teleoperation system in which the teleoperator
+            is in an unlimited workspace and performs natural hand motion for a series of manipulation tasks. In this
+            paper, we present a multimodal mobile teleoperation system that consists of a novel vision-based hand pose
+            regression network (Transteleop) and an IMU-based arm tracking method.
+            Network evaluation results on a test dataset and a variety of complex manipulation tasks
+            that go beyond simple pick-and-place operations show the efficiency
+            and stability of our multimodal teleoperation system.
+            </p>
+        <div style="text-align:center">
+            <img src="./teleop/teleop_framework.png" width="70%" alt="Pipeline"
+                 style="margin-left:auto;margin-right:auto;display:block">
+        </div>
+
+        <h2 id="Video">Video</h2>
+
+        A complete version:<br/>
+        <p align="center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/rAj2IWl2ezs" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </p>
+
+        <h2 id="Transteleop">Transteleop</h2>
+        <p align="justify">
+            Transteleop is a vision-based hand joint estimation network based on the image-to-image translation method.
+            Transteleop extracts coherent pose features between the paired human and robot hand based on
+            image-to-image translation methods. Transteleop takes the depth image of the human hand as input, then
+            estimates
+            the joint angles of the robot hand, and also generates the reconstructed image of the robot hand. 
+            A keypoint-based reconstruction loss explores the resemblance in appearance and anatomy between human and
+            robotic hands and enriches the local features of reconstructed images.
+            We trained
+            Transteleop based on a recently released
+            dataset of paired human-robot images from <a href="https://github.com/Smilels/TeachNet_Teleoperation">Teachnet</a>.
+        </p>
+        <div style="text-align:center">
+            <img src="./teleop/transteleop.png" width="100%" alt="teleop"
+                 style="margin-left:auto;margin-right:auto;display:block">
+        </div>
+
+                
+        <h2 id="Hardware">Hardware</h2>
+        1. Robot: a PR2 robot with a 19 DoF Shadow hand mounted on its right arm. <br/>
+        2. Camera: Intel RealSense SR300 depth sensor. <br/>
+        3. Camera holder. A wearable camera holder enables simultaneous hand-arm control and facilitates the mobility of the whole
+            teleoperation system.
+        <div style="text-align:center">
+            <img src="./teleop/camera_holder.png" width="20%" alt="holder"
+                 style="margin-left:auto;margin-right:auto;display:block">
+        </div>
+        4. IMU setup: <a
+            href="https://neuronmocap.com/system/files/software/Axis%20Neuron%20User%20Manual_V3.8.1.5.pdf">Perception
+        Neuron</a>(PN) device.
+        
+        <h2 id="Experiments">Experiments</h2>
+
+        <h3 id="detail1">Network implementation details</h3>
+        <p align="justify">
+            170K training images were trained for 100 epochs, batch size 32, with random jitter.
+            The input depth images are extracted from the raw depth
+            image as a fixed-size cube around the hand and resized
+            to 96 × 96.
+            We apply Adam optimizer with a learning rate of 0.002 and momentum parameters β<sub>1 =
+            0.5, β<sub>2 = 0.999.
+                We add a batch normalization (BN) layer and a rectified linear unit (ReLU) after each convolution layer.
+                ReLU is also employed as an activation function after all FC layers except for the last FC layer.</p>
+
+        <p align="left">
+            The encoder-decoder architecture consists of: <br/>
+            <strong>encoder</strong>: <br/>
+            C1-C32-C64-C128-C256-C512-C512
+            <br/>
+            <strong>decoder</strong>: <br/>
+            CD512-C256-C128-C64-C32-C1 <br/>
+            <strong>Joint regression</strong>: <br/>
+            FC18432-FC8192-FC128-FC22
+        </p>
+
+
+        <h3 id="detail2">Control implementation details</h3>
+        <p align="justify">The frequency of the arm’s velocity control is 20 Hz.
+            The frequency of the hand’s trajectory control is set to 10 Hz.
+            To simplify our experiments, we set the trajectory
+            control within a proper maximum force for each joint.
+            We only do collision check for the arm.
+            The system was tested on a Alienware15 with Intel Core i7-4720HQ CPU machine.
+        </p>
+        <h3 id="robot">Robot experiments</h3>
+        The multimodel teleoperation approach was systematically
+        evaluated across four types of physical tasks that analyze
+        precision and power grasps, prehensile and non-prehensile
+        manipulation, and dual-arm handover tasks.
+        One female and two male testers have participated in the
+        following robotic experiments, and each task was randomly
+        performed by one or two of them.<br/>
+        The complete video can be found in <a href="https://www.youtube.com/embed/rAj2IWl2ezs">here</a>.
+
+
+        <h2 id="Code">Code</h2>
+        <p>Code of this project can be found at <a href="https://github.com/Smilels/multimodal-translation-teleop">https://github.com/Smilels/multimodal-translation-teleop</a>.
+        </p>
+
+        <h2 id="citation">Citation</h2>
+        If you found this paper useful in your research, please consider citing:</p>
+
+        <pre><code class="language-plain">@inproceedings{li2018vision,
+  title={Vision-based Teleoperation of Shadow Dexterous Hand using End-to-End Deep Neural Network},
+  author={Li, Shuang and Ma, Xiaojian and Liang, Hongzhuo and G{\"o}rner, Michael and Ruppel, Philipp and Fang, Bing and Sun, Fuchun and Zhang, Jianwei},
+  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
+  year={2019}
+}
+</code></pre>
+    </section>
+
+
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+    </footer>
+</div>
+
+</body>
+</html>
