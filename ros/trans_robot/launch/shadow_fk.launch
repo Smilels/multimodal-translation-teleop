@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="shadow_forward_kinematics" pkg="trans_robot" type="shadow_forward_kinematics" output="screen">
+        <param name="jointsfile" value="$(find trans_robot)/data/joints_18k.csv"/>
+        <param name="cartesian_pos_file" value="$(find trans_robot)/data/joints_18k_xyz.csv"/>
+        <param name="location_frame" value="world"/>
+    </node>
+</launch>
