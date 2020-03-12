@@ -9,7 +9,7 @@ Please cite this paper ([A Mobile Robot Hand-Arm Teleoperation System by Vision 
 
 - Project website: [https://smilels.github.io/multimodal-translation-teleop/](https://smilels.github.io/multimodal-translation-teleop/)
 
-- Preprint: [https://arxiv.org/abs/1809.06268](https://arxiv.org/abs/1809.06268)
+- Preprint: [https://arxiv.org/abs/2003.05212](https://arxiv.org/abs/2003.05212)
 
 - Video: [https://www.youtube.com/watch?v=rAj2IWl2ezs](https://www.youtube.com/watch?v=rAj2IWl2ezs)
 
@@ -86,7 +86,7 @@ If you use this code for your research, please cite our papers.
 @inproceedings{li2020Mobilerobot,
 title={A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU},
 author={Li, Shuang and Jiang, Jiaxi and Ruppel, Philipp and Liang, Hongzhuo and Ma, Xiaojian and Hendrich, Norman and Sun, Fuchun and Zhang, Jianwei},
-journal={arXiv preprint arXiv:***},
+journal={arXiv preprint arXiv:2003.05212},
 year={2020}
 }
 @inproceedings{li2018vision,
