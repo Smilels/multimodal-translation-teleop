@@ -5,7 +5,7 @@ Author's mail: sli@informatik.uni-hamburg.de
 This package presents a multimodal mobile teleoperation system that consists of a novel vision-based hand pose
 regression network (Transteleop) and an IMU-based arm tracking method.
 
-Please cite this paper ([A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](https://arxiv.org/abs/1809.06268)), if you use our released code.
+Please cite this paper ([A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](https://arxiv.org/abs/2003.05212)), if you use our released code.
 
 - Project website: [https://smilels.github.io/multimodal-translation-teleop/](https://smilels.github.io/multimodal-translation-teleop/)
 
